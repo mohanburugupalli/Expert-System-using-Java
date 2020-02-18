@@ -1,0 +1,246 @@
+package com.javacodegeeks.drools;
+import com.javacodegeeks.drools.Stockprice;
+
+rule "Rule-1: All parameters together in positive trend"
+	when
+		stockprice : Stockprice(dividend > 10 && globalcues >= 4 && revenuegrowth > 15 && netclientschange > 10 && taxbenefits >= 4 && newproducts >=4)
+	then
+		System.out.println("********** Rule-1 is fired **********");
+		System.out.println("Stock price of the company is in very high bullish range. Very safe to invest on the company.");		
+end
+
+rule "Rule-2:Revneu growth is good or both globalcues and taxbenefits are good"
+	when
+		stockprice : Stockprice(revenuegrowth > 10 || (globalcues > 3 && taxbenefits >=4))
+	then
+		System.out.println("********** Rule-2 is fired **********");
+		System.out.println("Stock price of the company is expected to be stable. Can invest safely!");		
+end
+
+rule "Rule-3: R&D and newproducts together are sucessful or revenue growth and netclients change is performing good"
+	when
+		stockprice : Stockprice((newproducts >= 4 && randd >10) || (revenuegrowth > 10 && netclientschange > 10))
+	then
+		System.out.println("********** Rule-3 is fired **********");
+		System.out.println("5/5 Excellent time to invest on the company shares");		
+end
+
+rule "Rule-4:Dividend and netclients change or revenue growth and taxbenefits"
+	when
+		stockprice : Stockprice((dividend > 10 && netclientschange >10) || (revenuegrowth > 10 && taxbenefits >=4)) 
+	then
+		System.out.println("********** Rule-4 is fired **********");
+		System.out.println("5/5 Excellent time to invest on the company shares");		
+end
+
+rule "Rule-5: globalcues or taxbenefits or both revenuegrowtha and dividend performing well"
+	when
+		stockprice : Stockprice(globalcues >= 4 || taxbenefits >=4 || (revenuegrowth >= 10 && dividend >10))
+	then
+		System.out.println("********** Rule-5 is fired **********");
+		System.out.println("5/5 Excellent time to invest on the company shares");		
+end
+
+rule "Rule-6:globalcues, taxbenefits and revenue growth combination"
+	when
+		stockprice : Stockprice((globalcues == 4 && ==5) || (taxbenefits >= 4 && <=5) || (revenuegrowth >=5 && <=10)) 
+	then
+		System.out.println("********** Rule-6 is fired **********");
+		System.out.println("4/5 Good time to invest on the company shares");		
+end
+
+rule "Rule-7:revenue growth, new products and dividend combination"
+	when
+		stockprice : Stockprice(revenuegrowth >= 10 && newproducts > 10 && dividend <10)
+	then
+		System.out.println("********** Rule-7 is fired **********");
+		System.out.println("4/5 Good time to invest on the company shares");		
+end
+
+rule "Rule-8:revenue growth, r and d expenditure and global cues"
+	when
+		stockprice : Stockprice(revenuegrowth >= 10 && randd<5 && globalcues >=3 && <=4)
+	then
+		System.out.println("********** Rule-8 is fired **********");
+		System.out.println("4/5 Good time to invest on the company shares");		
+end
+
+rule "Rule-9:netclientschange, r and d and new products sucess"
+	when
+		stockprice : Stockprice((netclientschange >=5 && <=10) || (randd >= 4 && newproducts >=4))
+	then
+		System.out.println("********** Rule-9 is fired **********");
+		System.out.println("4/5 Good time to invest on the company shares");		
+end
+
+rule "Rule-10:dividend, revenue growth, r and d, net clients change"
+	when
+		stockprice : Stockprice((dividend > 10 && revenuegrowth > 10) ||(randd >= 10 && netclientschange >=10))
+	then
+		System.out.println("********** Rule-10 is fired **********");
+		System.out.println("4/5 Good time to invest on the company shares");		
+end
+
+rule "Rule-11:tax benefits, net clients change, global cues"
+	when
+		stockprice : Stockprice((taxbenefits == 3 && netclientschange >= 10) || (globalcues ==3 && netclientschange >=10))
+	then
+		System.out.println("********** Rule-11 is fired **********");
+		System.out.println("4/5 Good time to invest on the company shares");		
+end
+
+rule "Rule-12:dividend and revenue growth"
+	when
+		stockprice : Stockprice((dividend <8 && >5 && revenuegrowth >= 0 && <= 8) || (revenuegrowth <=10 && >=5 && dividend <=10 && >=5))
+	then
+		System.out.println("********** Rule-12 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-13:tax benefits and global cues"
+	when
+		stockprice : Stockprice((globalcues >=4 && taxbenefits <=2) || (taxbenefits >= 4 && globalcues <=2))
+	then
+		System.out.println("********** Rule-13 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-14:sucess of new products and net clients change"
+	when
+		stockprice : Stockprice(newproducts <= 3 && >0 && netclientschange <=5 && >=3 && revenuegrowth <=6 && >0)
+	then
+		System.out.println("********** Rule-14 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-15:r and d and new products"
+	when
+		stockprice : Stockprice(randd >2 && <5 && newproducts >3 && <6)
+	then
+		System.out.println("********** Rule-15 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-16:dividend, revenue growth, net clients change and r and d"
+	when
+		stockprice : Stockprice((dividend == 0 && revenuegrowth >=3 && <=6 ) || (netclientschange <1 && >-5 && randd >5 && <10))
+	then
+		System.out.println("********** Rule-16 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-17:tax benefits, net clients change, revenue growth"
+	when
+		stockprice : Stockprice((taxbenefits <=2 && netclientschange >=5) || revenuegrowth >5 && <10)
+	then
+		System.out.println("********** Rule-17 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-18:global cues, tax benefits, revenue growth, net clients change"
+	when
+		stockprice : Stockprice(((globalcues == 3) && (taxbenefits ==3)) ||((revenuegrowth <6 && >0) && (netclientschange <6 && >0)))
+	then
+		System.out.println("********** Rule-18 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-19:r and d, dividend, revenue growth, new products"
+	when
+		stockprice : Stockprice(((randd <3)) && (dividend <5) && (revenuegrowth >0 && <5 && newproducts <5))
+	then
+		System.out.println("********** Rule-19 is fired **********");
+		System.out.println("3/5 Invest with caution");		
+end
+
+rule "Rule-20:revenuegrowth, dividend, global cues"
+	when
+		stockprice : Stockprice((revenuegrowth >0 && < 5 && dividend <2) && (globalcues <=1))
+	then
+		System.out.println("********** Rule-20 is fired **********");
+		System.out.println("2/5 Do not invest");		
+end
+
+rule "Rule-21:revenue growth, dividend, tax benefits"
+	when
+		stockprice : Stockprice((revenuegrowth >0 && < 5 && dividend <2) && (taxbenefits <=1))
+	then
+		System.out.println("********** Rule-21 is fired **********");
+		System.out.println("2/5 Do not invest");		
+end
+
+rule "Rule-22:r and d and new products"
+	when
+		stockprice : Stockprice(newproducts <=2 && randd <=3 && revenuegrowth < -5)
+	then
+		System.out.println("********** Rule-22 is fired **********");
+		System.out.println("2/5 Do not invest");		
+end
+
+rule "Rule-23:dividend, revenuegrowth, globalcues"
+	when
+		stockprice : Stockprice(dividend == 0 && revenuegrowth <=0 && globalcues ==2)
+	then
+		System.out.println("********** Rule-23 is fired **********");
+		System.out.println("2/5 Do not invest");		
+end
+
+rule "Rule-24:net clients change, new products, revenue growth"
+	when
+		stockprice : Stockprice(netclientschange <=0 && newproducts <=1 && revenuegrowth >0 &&<2) 
+	then
+		System.out.println("********** Rule-24 is fired **********");
+		System.out.println("2/5 Do not invest");		
+end
+
+rule "Rule-25:dividend, revenuegrowth, globalcues"
+	when
+		stockprice : Stockprice((dividend>=5 && <=10) && revenuegrowth < 0 && globalcues<=2)
+	then
+		System.out.println("********** Rule-25 is fired **********");
+		System.out.println("2/5 Do not invest");		
+end
+
+rule "Rule-26:globalcues and taxbenefits"
+	when
+		stockprice : Stockprice(globalcues<=2 && taxbenefits <=2)
+	then
+		System.out.println("********** Rule-26 is fired **********");
+		System.out.println("1/5 Stay completely away from investing");		
+end
+
+rule "Rule-27:revenuegrowth, dividend, net clients change"
+	when
+		stockprice : Stockprice(revenuegrowth < -5 && dividend == 0 && netclientschange <0)
+	then
+		System.out.println("********** Rule-27 is fired **********");
+		System.out.println("1/5 Stay completely away from investing");		
+end
+
+rule "Rule-28:tasbenefits, netclientschange, r and d"
+	when
+		stockprice : Stockprice((taxbenefits <=2 || netclientschange < -5) && randd ==0)
+	then
+		System.out.println("********** Rule-28 is fired **********");
+		System.out.println("1/5 Stay completely away from investing");		
+end
+
+rule "Rule-29:new products, globalcues"
+	when
+		stockprice : Stockprice(newproducts <=2 && globalcues <=2)
+	then
+		System.out.println("********** Rule-29 is fired **********");
+		System.out.println("1/5 Stay completely away from investing");		
+end
+
+rule "Rule-30:globalcues, revenue growth, net clients change, r and d, success of new products"
+	when
+		stockprice : Stockprice(globalcues<=1 || revenuegrowth < -15 || netclientschange <-10 || (randd ==0 && newproducts<=1))
+	then
+		System.out.println("********** Rule-30 is fired **********");
+		System.out.println("1/5 Stay completely away from investing");		
+end
+
+
+
+
