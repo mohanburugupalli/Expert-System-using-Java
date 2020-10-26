@@ -1,13 +1,13 @@
 package com.javacodegeeks.drools;
 
 public class Stockprice {
-	public float dividend;
-	public int globalcues;
-	public float revenuegrowth;
-	public int netclientschange;
-	public float randd;
-	public int taxbenefits;
-	public int newproducts;
+	private float dividend;
+	private int globalcues;
+	private float revenuegrowth;
+	private int netclientschange;
+	private float randd;
+	private int taxbenefits;
+	private int newproducts;
 
 	public int getNewproducts() {
 		return newproducts;
